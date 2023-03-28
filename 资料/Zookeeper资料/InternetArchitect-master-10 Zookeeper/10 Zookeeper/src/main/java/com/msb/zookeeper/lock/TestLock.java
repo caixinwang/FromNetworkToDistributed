@@ -11,8 +11,6 @@ import org.junit.Test;
  * @create: 2019-09-20 21:21
  */
 public class TestLock {
-
-
     ZooKeeper zk ;
 
     @Before
@@ -60,11 +58,6 @@ public class TestLock {
         while(true){
 
         }
-
-
     }
-
-
-
 
 }

@@ -44,19 +44,14 @@ public class WatchCallBack  implements Watcher ,AsyncCallback.StatCallback, Asyn
         }
     }
 
-    @Override
     public void processResult(int rc, String path, Object ctx, byte[] data, Stat stat) {
-
         if(data != null ){
             String s = new String(data);
             conf.setConf(s);
             cc.countDown();
         }
-
-
     }
 
-    @Override
     public void processResult(int rc, String path, Object ctx, Stat stat) {
         if(stat != null){
             zk.getData("/AppConf",this,this,"sdfs");
@@ -64,7 +59,6 @@ public class WatchCallBack  implements Watcher ,AsyncCallback.StatCallback, Asyn
 
     }
 
-    @Override
     public void process(WatchedEvent event) {
 
         switch (event.getType()) {

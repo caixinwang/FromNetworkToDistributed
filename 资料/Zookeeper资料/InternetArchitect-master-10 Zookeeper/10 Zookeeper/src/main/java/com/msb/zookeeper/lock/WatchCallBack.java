@@ -69,8 +69,6 @@ public class WatchCallBack   implements Watcher, AsyncCallback.StringCallback ,A
 
     @Override
     public void process(WatchedEvent event) {
-
-
         //如果第一个哥们，那个锁释放了，其实只有第二个收到了回调事件！！
         //如果，不是第一个哥们，某一个，挂了，也能造成他后边的收到这个通知，从而让他后边那个跟去watch挂掉这个哥们前边的。。。
         switch (event.getType()) {
@@ -137,5 +135,8 @@ public class WatchCallBack   implements Watcher, AsyncCallback.StringCallback ,A
     @Override
     public void processResult(int rc, String path, Object ctx, Stat stat) {
         //偷懒
+        if (stat==null){
+            zk.getChildren("/",false,this ,"sdf");
+        }
     }
 }

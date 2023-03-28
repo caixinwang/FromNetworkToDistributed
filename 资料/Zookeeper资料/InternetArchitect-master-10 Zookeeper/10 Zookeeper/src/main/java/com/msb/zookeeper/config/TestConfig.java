@@ -10,16 +10,11 @@ import org.junit.Test;
  * @create: 2019-09-20 20:07
  */
 public class TestConfig {
-
-
     ZooKeeper zk;
-
-
     @Before
     public void conn (){
         zk  = ZKUtils.getZK();
     }
-
     @After
     public void close (){
         try {
@@ -28,10 +23,8 @@ public class TestConfig {
             e.printStackTrace();
         }
     }
-
-
     @Test
-    public void getConf(){
+    public void getConf() throws InterruptedException {
 
         WatchCallBack watchCallBack = new WatchCallBack();
         watchCallBack.setZk(zk);
@@ -49,7 +42,6 @@ public class TestConfig {
                 watchCallBack.aWait();
             }else{
                 System.out.println(myConf.getConf());
-
             }
 
             try {
@@ -60,9 +52,4 @@ public class TestConfig {
         }
 
     }
-
-
-
-
-
 }
